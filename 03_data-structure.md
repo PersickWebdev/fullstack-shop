@@ -94,8 +94,12 @@ userConfirmPassword
 ##### VALID DATA EXAMPLE:
 ```json
 {
+  "userName": "Vader",
+  "userPhone": "+380631112233",
   "userEmail": "deathStar@galaxy.com",
-  "userPassword": "Qwerty123456!"
+  "userPassword": "80uhye2h7yh3092",
+  "userConfirmPassword": "80uhye2h7yh3092",
+  "userProducts": [ image_01.png, image_02.png, image_03.png ]
 }      
 ```
 ##### RESPONSE:
@@ -201,8 +205,7 @@ SUCCESS
     status:     'success'
     message:    ''
     details:    ''
-    data:
-                user[]
+    data:       user[]
 }
 ERROR        
 {
@@ -245,10 +248,10 @@ userEmail
 ```json
 {
   "userId": "string",
-  "userName": "string",
-  "userPhone": "string",
-  "userEmail": "string",
-  "userProducts": []
+  "userName": "Mail",
+  "userPhone": "+380673334455",
+  "userEmail": "deathStar@galaxy.com",
+  "userProducts": [ image_01.png, image_02.png, image_03.png ]
 }
 ```
 ##### RESPONSE:
@@ -424,52 +427,6 @@ ERROR
     data:       null
 }
 ```
-### GET ONE
-```http request
-GET /product/get/productId
-```
-##### DATA TO SEND:
-```json
-{
-  "productId": "string",
-  "categoryId": "string"
-}
-```
-##### DATA VALIDATION:
-```
--  
-```
-##### VALID DATA EXAMPLE:
-```
--
-```
-##### RESPONSE:
-```
-SUCCESS
-{
-    code:       200
-    status:     'success'
-    message:    ''
-    details:    ''
-    data:       
-                {
-                    productId:          string
-                    categoryId:         string
-                    productName:        string
-                    productDescription: string
-                    productPrice:       number
-                    productImages:      .png[]
-                }       
-}
-ERROR
-{
-    code:       500
-    status:     'error'
-    message:    'Server error'
-    details:    'Try again later'
-    data:       null
-}
-```
 ### ADD
 ```http request
 POST /product/add
@@ -508,12 +465,12 @@ productImages
 
 ```json
 {
-  "categoryId": "string",
+  "categoryId": "Phones",
   "productId": "string",
-  "productName": "string",
-  "productDescription": "string",
-  "productPrice": "number",
-  "productImages": []
+  "productName": "iPhone",
+  "productDescription": "Cool device",
+  "productPrice": "$ 1300",
+  "productImages": [ image_01.png, image_02.png, image_03.png ]
 }
 ```
 ##### RESPONSE:
@@ -580,12 +537,12 @@ productImages
 ##### VALID DATA EXAMPLE:
 ```json
 {
-  "categoryId": "string",
+  "categoryId": "Cars",
   "productId": "string",
-  "productName": "string",
-  "productDescription": "string",
-  "productPrice": "number",
-  "productImages": []
+  "productName": "Tesla",
+  "productDescription": "Cool car",
+  "productPrice": "$ 25000",
+  "productImages": [ images_01.png, images_02.png, images_03.png ]
 }
 ```
 ##### RESPONSE:
