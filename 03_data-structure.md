@@ -574,3 +574,221 @@ ERROR
     data:       null
 }
 ```
+## CATEGORY DATA
+### GET ALL
+```http request
+GET /category/get-all
+```
+##### DATA TO SEND:
+```
+-
+```
+##### DATA VALIDATION:
+```
+-
+```
+##### VALID DATA EXAMPLE:
+```
+-
+```
+##### RESPONSE:
+```
+SUCCESS
+{
+    code:       200
+    status:     'success'
+    message:    ''
+    details:    ''
+    data:       category[]
+}
+ERROR
+{
+    code:       500
+    status:     'error'
+    message:    ''
+    details:    ''
+    data:       null
+}
+```
+### GET ONE
+```http request
+GET /category/get/categoryId
+```
+##### DATA TO SEND:
+
+```json
+{
+  "categoryId": "string"
+}
+```
+##### DATA VALIDATION:
+```
+-
+```
+##### VALID DATA EXAMPLE:
+```
+-
+```
+##### RESPONSE:
+```
+SUCCESS
+{
+    code:       200
+    status:     'success'
+    message:    ''
+    details:    ''
+    data:       
+                {
+                    categoryId:     string
+                    categoryName:   string
+                }
+}
+ERROR
+{
+    code:       500
+    status:     'error'
+    message:    'Server error'
+    details:    'Try again later'
+    data:       null
+}
+```
+### ADD
+```http request
+POST /category/add
+```
+##### DATA TO SEND:
+
+```json
+{
+  "categoryId": "string",
+  "categoryName": "string"
+}
+```
+##### DATA VALIDATION:
+```
+categoryId
+    - created automatically
+categoryName
+    - can not be empty
+    - no more than 255 characters
+```
+##### VALID DATA EXAMPLE:
+
+```json
+{
+  "categoryId": "2137yhe",
+  "categoryName": "Books"
+}
+```
+##### RESPONSE:
+```
+SUCCESS
+{
+    code:       201
+    status:     'success'
+    message:    ''
+    details:    ''
+    data:       
+                {
+                    categoryId:     string
+                    categoryName:   string
+                }
+}
+ERROR
+{
+    code:       400
+    status:     'error'
+    message:    'Category ${categoryName} already exists'
+    details:    'You can not create two categories with the same name'
+    data:       null
+}
+```
+### EDIT
+```http request
+PUT /category/edit/categoryId
+```
+##### DATA TO SEND:
+
+```json
+{
+  "categoryId": "string",
+  "categoryName": "string"
+}
+```
+##### DATA VALIDATION:
+```
+categoryId
+    - created automatically
+categoryName
+    - can not be empty
+    - no more than 255 characters
+```
+##### VALID DATA EXAMPLE:
+
+```json
+{
+  "categoryId": "2yhe",
+  "categoryName": "Sweets"
+}
+```
+##### RESPONSE:
+```
+SUCCESS
+{
+    code:       201
+    status:     'success'
+    message:    ''
+    details:    ''
+    data:       
+                {
+                    categoryId:     string
+                    categoryName:   string
+                }
+}
+ERROR
+{
+    code:       500
+    status:     'error'
+    message:    'Server error'
+    details:    'Try again later'
+    data:       null
+}
+```
+### DELETE
+```http request
+DELETE /category/delete/categoryId
+```
+##### DATA TO SEND:
+
+```json
+{
+  "categoryId": "string"
+}
+```
+##### DATA VALIDATION:
+```
+-
+```
+##### VALID DATA EXAMPLE:
+```
+-
+```
+##### RESPONSE:
+```
+SUCCESS
+{
+    code:       200
+    status:     'success'
+    message:    'Category ${categoryName} has been successfully deleted'
+    details:    ''
+    data:       null
+}
+ERROR
+{
+    code:       500
+    status:     'error'
+    message:    'Server error'
+    details:    'Try again later'
+    data:       null
+}
+```
