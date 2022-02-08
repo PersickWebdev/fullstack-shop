@@ -392,41 +392,6 @@ ERROR
     data:       null
 }
 ```
-### GET ALL
-```http request
-POST /product/get-all
-```
-##### DATA TO SEND:
-```
--
-```
-##### DATA VALIDATION:
-```
--  
-```
-##### VALID DATA EXAMPLE:
-```
--
-```
-##### RESPONSE:
-```
-SUCCESS
-{
-    code:       200
-    status:     'success'
-    message:    ''
-    details:    ''
-    data:       product[]       
-}
-ERROR
-{
-    code:       500
-    status:     'error'
-    message:    'Server error'
-    details:    'Try again later'
-    data:       null
-}
-```
 ### ADD
 ```http request
 POST /product/add
