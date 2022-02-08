@@ -179,7 +179,7 @@ ERROR
 ```
 ### GET ALL
 ``` http request
-GET /user/get
+GET /user/get-all
 ```
 ##### DATA TO SEND:
 ```
@@ -306,5 +306,349 @@ ERROR
     message:    'Server error'
     details:    'Try again later'
     data:       null    
+}
+```
+## PRODUCT DATA
+### GET ALL
+```http request
+GET /product/get-all
+```
+##### DATA TO SEND:
+```
+-
+```
+##### DATA VALIDATION:
+```
+-
+```
+##### VALID DATA EXAMPLE:
+```
+-
+```
+##### RESPONSE:
+```
+SUCCESS
+{
+    code:       200
+    status:     'success'
+    message:    ''
+    details:    ''
+    data:       product[]
+}
+ERROR
+{
+    code:       500
+    status:     'error'
+    message:    'Server error'
+    details:    'Try again later'
+    data:       null
+}
+```
+### GET ONE
+```http request
+GET /product/get/productId
+```
+##### DATA TO SEND:
+```json
+{
+    "productId": "string"
+}
+```
+##### DATA VALIDATION:
+```
+-
+```
+##### VALID DATA EXAMPLE:
+```
+-
+```
+##### RESPONSE:
+```
+SUCCESS
+{
+    code:       200
+    status:     'success'
+    message:    ''
+    details:    ''
+    data:       
+                {
+                    productId:          string
+                    categoryId:         string
+                    productName:        string
+                    productDescription: string
+                    productPrice:       number
+                    productImages:      .png[]
+                }
+}
+ERROR
+{
+    code:       500
+    status:     'error'
+    message:    'Server error'
+    details:    'Try again later'
+    data:       null
+}
+```
+### GET ALL
+```http request
+POST /product/get-all
+```
+##### DATA TO SEND:
+```
+-
+```
+##### DATA VALIDATION:
+```
+-  
+```
+##### VALID DATA EXAMPLE:
+```
+-
+```
+##### RESPONSE:
+```
+SUCCESS
+{
+    code:       200
+    status:     'success'
+    message:    ''
+    details:    ''
+    data:       product[]       
+}
+ERROR
+{
+    code:       500
+    status:     'error'
+    message:    'Server error'
+    details:    'Try again later'
+    data:       null
+}
+```
+### GET ONE
+```http request
+GET /product/get/productId
+```
+##### DATA TO SEND:
+```json
+{
+  "productId": "string",
+  "categoryId": "string"
+}
+```
+##### DATA VALIDATION:
+```
+-  
+```
+##### VALID DATA EXAMPLE:
+```
+-
+```
+##### RESPONSE:
+```
+SUCCESS
+{
+    code:       200
+    status:     'success'
+    message:    ''
+    details:    ''
+    data:       
+                {
+                    productId:          string
+                    categoryId:         string
+                    productName:        string
+                    productDescription: string
+                    productPrice:       number
+                    productImages:      .png[]
+                }       
+}
+ERROR
+{
+    code:       500
+    status:     'error'
+    message:    'Server error'
+    details:    'Try again later'
+    data:       null
+}
+```
+### ADD
+```http request
+POST /product/add
+```
+##### DATA TO SEND:
+```json
+{
+  "categoryId": "string",
+  "productId": "string",
+  "productName": "string",
+  "productDescription": "string",
+  "productPrice": "number",
+  "productImages": []
+}
+```
+##### DATA VALIDATION:
+```
+categoryId
+    - can not be empty
+productId
+    - can not be empty
+productName
+    - can not be empty
+    - only latin characters
+    - no more than 255 characters 
+productDescription
+    - can not be empty
+productPrice
+    - can not be empty
+    - can not be 0
+productImages
+    - can not be empty
+    - al least 3 files (.png)              
+```
+##### VALID DATA EXAMPLE:
+
+```json
+{
+  "categoryId": "string",
+  "productId": "string",
+  "productName": "string",
+  "productDescription": "string",
+  "productPrice": "number",
+  "productImages": []
+}
+```
+##### RESPONSE:
+```
+SUCCESS
+{
+    code:       201
+    status:     'success'
+    message:    'Product ${productName} has been successfully added'
+    details:    ''
+    data:       
+                {
+                    productId:          string
+                    categoryId:         string
+                    productName:        string
+                    productDescription: string
+                    productPrice:       number
+                    productImages:      .png[]
+                }
+}
+ERROR
+{
+    code:       500
+    status:     'error'
+    message:    'Server error'
+    details:    'Try again later'
+    data:       null
+}
+```
+### EDIT
+```http request
+PUT /product/edit/productId
+```
+##### DATA TO SEND:
+```json
+{
+  "categoryId": "string",
+  "productId": "string",
+  "productName": "string",
+  "productDescription": "string",
+  "productPrice": "number",
+  "productImages": []
+}
+```
+##### DATA VALIDATION:
+```
+categoryId
+    - can not be empty
+productId
+    - can not be empty
+productName
+    - can not be empty
+    - only latin characters
+    - no more than 255 characters 
+productDescription
+    - can not be empty
+productPrice
+    - can not be empty
+    - can not be 0
+productImages
+    - can not be empty
+    - al least 3 files (.png)      
+```
+##### VALID DATA EXAMPLE:
+```json
+{
+  "categoryId": "string",
+  "productId": "string",
+  "productName": "string",
+  "productDescription": "string",
+  "productPrice": "number",
+  "productImages": []
+}
+```
+##### RESPONSE:
+```
+SUCCESS
+{
+    code:       201
+    status:     'success'
+    message:    'Product ${productName} has been successfully edited'
+    details:    ''
+    data:       
+                {
+                    productId:          string
+                    categoryId:         string
+                    productName:        string
+                    productDescription: string
+                    productPrice:       number
+                    productImages:      .png[]
+                }
+}
+ERROR
+{
+    code:       500
+    status:     'error'
+    message:    'Server error'
+    details:    'Try again later'
+    data:       null
+}
+```
+### DELETE
+```http request
+DELETE /product/delete/productId
+```
+##### DATA TO SEND:
+```json
+{
+  "productId": "string"
+}
+```
+##### DATA VALIDATION:
+```
+-     
+```
+##### VALID DATA EXAMPLE:
+```
+-
+```
+##### RESPONSE:
+```
+SUCCESS
+{
+    code:       200
+    status:     'success'
+    message:    'Product ${productName} has been successfully deleted'
+    details:    ''
+    data:       null
+}
+ERROR
+{
+    code:       500
+    status:     'error'
+    message:    'Server error'
+    details:    'Try again later'
+    data:       null
 }
 ```
