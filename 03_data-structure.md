@@ -64,7 +64,7 @@ POST /auth/sign-up
   "userEmail": "string",
   "userPassword": "string",
   "userConfirmPassword": "string",
-  "userProducts": "array"
+  "userProducts": []
 }
 ```
 ##### DATA VALIDATION:
@@ -87,8 +87,9 @@ userPassword
     - at least one uppercase character
     - at least one lowercase character
     - at least one figure character
-    - at least one punctuation character        
-         
+    - at least one punctuation character  
+userConfirmPassword
+    - must match with userPassword value          
 ```
 ##### VALID DATA EXAMPLE:
 ```json
@@ -135,6 +136,14 @@ GET /user/get/userId
   "userId": "string"
 }
 ```
+##### DATA VALIDATION:
+```
+-
+```
+##### VALID DATA EXAMPLE:
+```
+-  
+```
 ##### RESPONSE:
 ```
 SUCCESS
@@ -173,8 +182,16 @@ ERROR
 GET /user/get
 ```
 ##### DATA TO SEND:
-```json
+```
 -
+```
+##### DATA VALIDATION:
+```
+-       
+```
+##### VALID DATA EXAMPLE:
+```
+-  
 ```
 ##### RESPONSE:
 ```
@@ -198,7 +215,7 @@ ERROR
 ```
 ### EDIT
 ``` http request
-GET /user/edit/userId
+PUT /user/edit/userId
 ```
 ##### DATA TO SEND:
 ```json
@@ -207,7 +224,31 @@ GET /user/edit/userId
   "userName": "string",
   "userPhone": "string",
   "userEmail": "string",
-  "userProducts": "array"
+  "userProducts": []
+}
+```
+##### DATA VALIDATION:
+```
+userName
+    - can not be empty
+    - at least 2 characters
+    - only latin characters
+    - no more than 255 characters
+userPhone
+    - can not be empty
+    - correct universal phone format
+userEmail
+    - can not be empty
+    - must be in correct email format
+```
+##### VALID DATA EXAMPLE:
+```json
+{
+  "userId": "string",
+  "userName": "string",
+  "userPhone": "string",
+  "userEmail": "string",
+  "userProducts": []
 }
 ```
 ##### RESPONSE:
@@ -220,6 +261,43 @@ SUCCESS
     details:    ''
     data:
                 user[]
+}
+ERROR        
+{
+    code:       500
+    status:     'error'
+    message:    'Server error'
+    details:    'Try again later'
+    data:       null    
+}
+```
+### DELETE
+``` http request
+DELETE /user/delete/userId
+```
+##### DATA TO SEND:
+```json
+{
+  "userId": "string"
+}
+```
+##### DATA VALIDATION:
+```
+-
+```
+##### VALID DATA EXAMPLE:
+```
+-
+```
+##### RESPONSE:
+```
+SUCCESS
+{
+    code:       200
+    status:     'success'
+    message:    'User ${userName} has been successfully deleted'
+    details:    ''
+    data:       null
 }
 ERROR        
 {
