@@ -25,6 +25,7 @@
   "productName": "string",
   "productDescription": "string",
   "productPrice": "number",
+  "productRating": "number", 
   "productImages": []
 }
 ```
@@ -35,6 +36,9 @@
   "orderId": "string",
   "orderDate": "string",
   "orderPrice": "number",
+  "userId": "string",
+  "userName": "string",
+  "userPhone": "string",
   "products": [{}, {}, {}]
 }
 ```

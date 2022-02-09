@@ -391,6 +391,7 @@ SUCCESS
                     productName:        string
                     productDescription: string
                     productPrice:       number
+                    productRating:      number
                     productImages:      .png[]
                 }
 }
@@ -408,6 +409,7 @@ ERROR
 POST /product/add
 ```
 ##### DATA TO SEND:
+
 ```json
 {
   "categoryId": "string",
@@ -415,6 +417,7 @@ POST /product/add
   "productName": "string",
   "productDescription": "string",
   "productPrice": "number",
+  "productRating": "number",
   "productImages": []
 }
 ```
@@ -433,6 +436,8 @@ productDescription
 productPrice
     - can not be empty
     - can not be 0
+productRating
+    - can not be higher than 0
 productImages
     - can not be empty
     - al least 3 files (.png)              
@@ -446,7 +451,12 @@ productImages
   "productName": "iPhone",
   "productDescription": "Cool device",
   "productPrice": "$ 1300",
-  "productImages": [image_01.png, image_02.png, image_03.png]
+  "productRating": "0",
+  "productImages": [
+    image_01.png,
+    image_02.png,
+    image_03.png
+  ]
 }
 ```
 ##### RESPONSE:
@@ -464,6 +474,7 @@ SUCCESS
                     productName:        string
                     productDescription: string
                     productPrice:       number
+                    productRating:      number
                     productImages:      .png[]
                 }
 }
@@ -481,6 +492,7 @@ ERROR
 PUT /product/edit/productId
 ```
 ##### DATA TO SEND:
+
 ```json
 {
   "categoryId": "string",
@@ -488,7 +500,12 @@ PUT /product/edit/productId
   "productName": "string",
   "productDescription": "string",
   "productPrice": "number",
-  "productImages": [image_01.png, image_02.png, image_03.png]
+  "productRating": "0",
+  "productImages": [
+    image_01.png,
+    image_02.png,
+    image_03.png
+  ]
 }
 ```
 ##### DATA VALIDATION:
@@ -511,6 +528,7 @@ productImages
     - al least 3 files (.png)      
 ```
 ##### VALID DATA EXAMPLE:
+
 ```json
 {
   "categoryId": "Cars",
@@ -518,7 +536,12 @@ productImages
   "productName": "Tesla",
   "productDescription": "Cool car",
   "productPrice": "$ 25000",
-  "productImages": [ images_01.png, images_02.png, images_03.png ]
+  "productRating": "5",
+  "productImages": [
+    images_01.png,
+    images_02.png,
+    images_03.png
+  ]
 }
 ```
 ##### RESPONSE:
@@ -536,6 +559,7 @@ SUCCESS
                     productName:        string
                     productDescription: string
                     productPrice:       number
+                    productRating:      number
                     productImages:      .png[]
                 }
 }
