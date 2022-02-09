@@ -39,7 +39,7 @@ SUCCESS
                     userName:       string
                     userPhone:      string
                     userEmail:      string
-                    userProducts:   array
+                    userProducts:   product[]
                 }
 }
 ERROR        
@@ -89,7 +89,9 @@ userPassword
     - at least one figure character
     - at least one punctuation character  
 userConfirmPassword
-    - must match with userPassword value          
+    - must match with userPassword value    
+userProducts
+    - must be an empty array          
 ```
 ##### VALID DATA EXAMPLE:
 ```json
@@ -99,7 +101,7 @@ userConfirmPassword
   "userEmail": "deathStar@galaxy.com",
   "userPassword": "80uhye2h7yh3092",
   "userConfirmPassword": "80uhye2h7yh3092",
-  "userProducts": [ image_01.png, image_02.png, image_03.png ]
+  "userProducts": []
 }      
 ```
 ##### RESPONSE:
@@ -116,7 +118,7 @@ SUCCESS
                     userName:       string
                     userPhone:      string
                     userEmail:      string
-                    userProducts:   array
+                    userProducts:   product[]
                 }
 }
 ERROR        
@@ -142,11 +144,15 @@ GET /user/get/userId
 ```
 ##### DATA VALIDATION:
 ```
--
+userId
+    - can not be empty
 ```
 ##### VALID DATA EXAMPLE:
-```
--  
+
+```json
+{
+  "userId": "2t6y7u8i9"
+}
 ```
 ##### RESPONSE:
 ```
@@ -162,7 +168,7 @@ SUCCESS
                     userName:       string
                     userPhone:      string
                     userEmail:      string
-                    userProducts:   array
+                    userProducts:   product[]
                 }
 }
 ERROR        
@@ -227,7 +233,7 @@ PUT /user/edit/userId
   "userName": "string",
   "userPhone": "string",
   "userEmail": "string",
-  "userProducts": []
+  "userProducts": [{}, {}, {}]
 }
 ```
 ##### DATA VALIDATION:
@@ -242,7 +248,7 @@ userPhone
     - correct universal phone format
 userEmail
     - can not be empty
-    - must be in correct email format
+    - must be in correct email format   
 ```
 ##### VALID DATA EXAMPLE:
 ```json
@@ -251,7 +257,7 @@ userEmail
   "userName": "Mail",
   "userPhone": "+380673334455",
   "userEmail": "deathStar@galaxy.com",
-  "userProducts": [ image_01.png, image_02.png, image_03.png ]
+  "userProducts": [{}, {}, {}]
 }
 ```
 ##### RESPONSE:
@@ -262,8 +268,7 @@ SUCCESS
     status:     'success'
     message:    ''
     details:    ''
-    data:
-                user[]
+    data:       user[]
 }
 ERROR        
 {
@@ -286,11 +291,14 @@ DELETE /user/delete/userId
 ```
 ##### DATA VALIDATION:
 ```
--
+userId
+    - can not be empty
 ```
 ##### VALID DATA EXAMPLE:
-```
--
+```json
+{
+  "userId": "4r5t6y7u"
+}
 ```
 ##### RESPONSE:
 ```
@@ -359,11 +367,14 @@ GET /product/get/productId
 ```
 ##### DATA VALIDATION:
 ```
--
+productId
+    - can not be empty
 ```
 ##### VALID DATA EXAMPLE:
-```
--
+```json
+{
+  "productId": "42r245"
+}
 ```
 ##### RESPONSE:
 ```
@@ -435,7 +446,7 @@ productImages
   "productName": "iPhone",
   "productDescription": "Cool device",
   "productPrice": "$ 1300",
-  "productImages": [ image_01.png, image_02.png, image_03.png ]
+  "productImages": [image_01.png, image_02.png, image_03.png]
 }
 ```
 ##### RESPONSE:
@@ -477,7 +488,7 @@ PUT /product/edit/productId
   "productName": "string",
   "productDescription": "string",
   "productPrice": "number",
-  "productImages": []
+  "productImages": [image_01.png, image_02.png, image_03.png]
 }
 ```
 ##### DATA VALIDATION:
@@ -549,11 +560,15 @@ DELETE /product/delete/productId
 ```
 ##### DATA VALIDATION:
 ```
--     
+productId
+    - can not be empty    
 ```
 ##### VALID DATA EXAMPLE:
-```
--
+
+```json
+{
+  "productId": "34t65t76yu8734u"
+}
 ```
 ##### RESPONSE:
 ```
@@ -623,11 +638,14 @@ GET /category/get/categoryId
 ```
 ##### DATA VALIDATION:
 ```
--
+categoryId
+    - can not be empty
 ```
 ##### VALID DATA EXAMPLE:
-```
--
+```json
+{
+  "categoryId": "32e4rt53t"
+}
 ```
 ##### RESPONSE:
 ```
@@ -767,11 +785,15 @@ DELETE /category/delete/categoryId
 ```
 ##### DATA VALIDATION:
 ```
--
+categoryId
+    - can not be empty
 ```
 ##### VALID DATA EXAMPLE:
-```
--
+
+```json
+{
+  "categoryId": "3e2r44t5"
+}
 ```
 ##### RESPONSE:
 ```
@@ -806,11 +828,14 @@ GET /order/get/userId
 ```
 ##### DATA VALIDATION:
 ```
--
+userId
+    - can not be empty
 ```
 ##### VALID DATA EXAMPLE:
-```
--
+```json
+{
+  "userId": "32r435t"
+}
 ```
 ##### RESPONSE:
 ```
@@ -833,8 +858,8 @@ ERROR
 {
     code:       404
     status:     'error'
-    message:    ''
-    details:    ''
+    message:    'User with such id was not found'
+    details:    'Check user id'
     data:       null
 }
 
@@ -927,9 +952,7 @@ products
   "userId": "625asd",
   "orderId": "9eygd673ue67",
   "orderPrice": "300",
-  "products": [
-    {}, {}, {}
-  ]
+  "products": [{}, {}, {}]
 }
 ```
 ##### RESPONSE:
@@ -949,14 +972,6 @@ SUCCESS
                 }    
 }
 ERROR
-{
-    code:       404
-    status:     'error'
-    message:    'No orders found'
-    details:    'Add your order'
-    data:       null
-}
-
 {
     code:       500
     status:     'error'
