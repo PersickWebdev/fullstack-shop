@@ -792,3 +792,293 @@ ERROR
     data:       null
 }
 ```
+## ORDER DATA
+### GET ONE
+```http request
+GET /order/get/userId
+```
+##### DATA TO SEND:
+
+```json
+{
+  "userId": "string"
+}
+```
+##### DATA VALIDATION:
+```
+-
+```
+##### VALID DATA EXAMPLE:
+```
+-
+```
+##### RESPONSE:
+```
+SUCCESS
+{
+    code:       200
+    status:     'success'
+    message:    ''
+    details:    ''
+    data:   
+                {
+                    userId:         string,
+                    orderId:        string,
+                    orderDate:      string,
+                    orderPrice:     number,
+                    products:       product[]
+                }     
+}
+ERROR
+{
+    code:       404
+    status:     'error'
+    message:    ''
+    details:    ''
+    data:       null
+}
+
+{
+    code:       500
+    status:     'error'
+    message:    'Server error'
+    details:    'Try again later'
+    data:       null
+}
+```
+### GET ALL
+```http request
+GET /order/get
+```
+##### DATA TO SEND:
+
+```
+-
+```
+##### DATA VALIDATION:
+```
+-
+```
+##### VALID DATA EXAMPLE:
+```
+-
+```
+##### RESPONSE:
+```
+SUCCESS
+{
+    code:       200
+    status:     'success'
+    message:    ''
+    details:    ''
+    data:       order[]    
+}
+ERROR
+{
+    code:       404
+    status:     'error'
+    message:    'No orders found'
+    details:    'Add your order'
+    data:       null
+}
+
+{
+    code:       500
+    status:     'error'
+    message:    'Server error'
+    details:    'Try again later'
+    data:       null
+}
+```
+### ADD
+```http request
+POST /order/add
+```
+##### DATA TO SEND:
+
+```json
+{
+  "userId": "string",
+  "orderId": "string",
+  "orderDate": "string",
+  "orderPrice": "number",
+  "products": [{}, {}, {}]
+}
+```
+##### DATA VALIDATION:
+```
+userId
+    - can not be empty
+orderId
+    - will be created automatically
+orderDate
+    - can not be empty
+    - string in local format 
+productPrice
+    - can not be empty
+    - can not be 0
+products
+    - can not be empty           
+```
+##### VALID DATA EXAMPLE:
+
+```json
+{
+  "userId": "625asd",
+  "orderId": "9eygd673ue67",
+  "orderPrice": "300",
+  "products": [
+    {}, {}, {}
+  ]
+}
+```
+##### RESPONSE:
+```
+SUCCESS
+{
+    code:       201
+    status:     'success'
+    message:    'Order has been successfully created'
+    details:    ''
+    data:       
+                {
+                    userId:         string,
+                    orderId:        string,
+                    orderPrice:     number,
+                    products:       product[]
+                }    
+}
+ERROR
+{
+    code:       404
+    status:     'error'
+    message:    'No orders found'
+    details:    'Add your order'
+    data:       null
+}
+
+{
+    code:       500
+    status:     'error'
+    message:    'Server error'
+    details:    'Try again later'
+    data:       null
+}
+```
+### EDIT
+```http request
+PUT /order/edit/orderId
+```
+##### DATA TO SEND:
+
+```json
+{
+  "orderId": "string",
+  "orderDate": "string",
+  "orderPrice": "number",
+  "products": [{}, {}, {}]
+}
+```
+##### DATA VALIDATION:
+```
+userId
+    - can not be empty
+orderId
+    - will be created automatically
+orderDate
+    - can not be empty
+    - string in local format 
+productPrice
+    - can not be empty
+    - can not be 0
+products
+    - can not be empty           
+```
+##### VALID DATA EXAMPLE:
+
+```json
+{
+  "orderId": "string",
+  "orderData": "string",
+  "orderPrice": "300",
+  "products": [{}, {}, {}]
+}
+```
+##### RESPONSE:
+```
+SUCCESS
+{
+    code:       201
+    status:     'success'
+    message:    'Order has been successfully edited'
+    details:    ''
+    data:       
+                {
+                    userId:         string,
+                    orderId:        string,
+                    orderPrice:     number,
+                    products:       product[]
+                }    
+}
+ERROR
+{
+    code:       500
+    status:     'error'
+    message:    'Server error'
+    details:    'Try again later'
+    data:       null
+}
+```
+### DELETE
+```http request
+DELETE /order/delete/orderId
+```
+##### DATA TO SEND:
+
+```json
+{
+  "orderId": "string",
+  "userId": "string"
+}
+```
+##### DATA VALIDATION:
+```
+userId
+    - can not be empty
+orderId
+    - can not be empty        
+```
+##### VALID DATA EXAMPLE:
+
+```json
+{
+  "orderId": "string",
+  "userId": "string"
+}
+```
+##### RESPONSE:
+```
+SUCCESS
+{
+    code:       200
+    status:     'success'
+    message:    'Order has been successfully deleted'
+    details:    ''
+    data:       null   
+}
+ERROR
+{
+    code:       404
+    status:     'error'
+    message:    'No user with such id was found'
+    details:    ''
+    data:       null
+}
+{
+    code:       500
+    status:     'error'
+    message:    'Server error'
+    details:    'Try again later'
+    data:       null
+}
+```

@@ -28,3 +28,17 @@
   "productImages": []
 }
 ```
+## ORDER MODEL
+
+```json
+{
+  "orderId": "string",
+  "orderDate": "string",
+  "orderPrice": "number",
+  "categoryId": "string",
+  "categoryName": "string",
+  "productId": "string",
+  "productName": "string",
+  "productPrice": "string"
+}
+```
