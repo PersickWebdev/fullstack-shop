@@ -3,6 +3,7 @@
 ```
 - express
 - sequelize
+- pg
 - config
 - jsonwebtoken
 - bcryptjs

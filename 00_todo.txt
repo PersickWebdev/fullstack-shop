@@ -1,0 +1,6 @@
+01. Set up a database connection (index.js).
+02. Create Models (models/):
+    - UserModel
+    - CategoryModel
+    - ProductModel
+    - OrderModel
