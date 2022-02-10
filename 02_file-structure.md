@@ -2,17 +2,21 @@
 ##### DEPENDENCIES:
 ```
 - express
+- @types/express
 - sequelize
 - pg
-- config
 - jsonwebtoken
 - bcryptjs
 - nodemon
 - cors
+- ts-node
+- typescript
+- sequelize-typescript
+- reflect-metadata
 ```
 ##### FILE STRUCTURE:
 ```
-- index.js
+- index.ts
 - package.json
 - client/
 - config/
