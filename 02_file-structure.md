@@ -13,25 +13,33 @@
 - typescript
 - sequelize-typescript
 - reflect-metadata
+- dotenv
 ```
 ##### FILE STRUCTURE:
 ```
 - index.ts
++ client/
++ dist/
++ src/
+    + config/
+        - database.ts
+        - settings.ts
+    + models/
+        - UserModel.ts
+        - CategoryModel.ts
+        - ProductModel.ts
+        - OrderModel.ts
+    + routes/
+        - authRoutes.ts
+        - userRoutes.ts
+        - categoryModel.ts
+        - productRoutes.ts
+        - orderModel.ts
+    + utils/    
 - package.json
-- client/
-- config/
-    - default.json
-- models/
-    - UserModel.js
-    - CategoryModel.js
-    - ProductModel.js
-    - OrderModel.js
-- routes/
-    - authRoutes.js
-    - userRoutes.js
-    - categoryRoutes.js
-    - productRoutes.js
-    - orderRoutes.js
+- package-lock.json
+- tsconfig.json
+- .gitignore
 ```
 
 ## CLIENT
