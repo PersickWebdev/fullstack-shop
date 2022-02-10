@@ -8,6 +8,7 @@
 - jsonwebtoken
 - bcryptjs
 - nodemon
+- cors
 ```
 ##### FILE STRUCTURE:
 ```
